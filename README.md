@@ -4,6 +4,13 @@
 - **T** the *Num.mixtures* mixtures
 - **P** the proportions used to build T
 
+## Instalation
+
+```{r, eval = FALSE}
+if(!require(devtools)){install.packages("devtools")}
+devtools::install_github("adrien0598/bulkfaker")
+```
+
 ## Quick use
 ```{r, eval = FALSE}
 # sc_counts a single cell dataset
