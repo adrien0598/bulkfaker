@@ -1,8 +1,8 @@
 # Bulk_generator
 
-Bulk_generator() function returns a list containing two data.frame : 
-- *T* the Num.mixtures mixtures
-- *P* the proportions used to build T
+*Bulk_generator()* function returns a list containing two data.frame : 
+- **T** the *Num.mixtures* mixtures
+- **P** the proportions used to build T
 
 ## Quick use
 ```{r, eval = FALSE}
@@ -31,8 +31,8 @@ pseudoBulk$P #proportions, no 0 (except rounded ones)
 
 ## Other parameters
 
-- Num.mixtures = 1000
-- pool.size = 100
-- min.percentage = 1
-- max.percentage = 99
-- seed = 24
+- **Num.mixtures** = 1000
+- **pool.size** = 100
+- **min.percentage** = 1
+- **max.percentage** = 99
+- **seed** = 24
