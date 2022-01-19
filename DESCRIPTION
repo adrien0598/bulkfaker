@@ -1,0 +1,19 @@
+Package: bulkfaker
+Title: Highly configurable generation of pseudo bulk from single cell references
+Version: 0.0.0.9000
+Authors@R: 
+    person("Adrien", "Thomas", , "adrien.thomas@agroparistech.fr", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-0661-5650"))
+Description: bulkfaker allows the creation of pseudo bulk from single cell data. The number of cell types to be included and the construction method is fully configurable. The package also includes some analysis and verification functions of the obtained pseudo bulk.
+License: GPL-3
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Imports: 
+    dplyr,
+    stats,
+    utils
+Suggests: 
+    rmarkdown,
+    knitr
+VignetteBuilder: knitr
