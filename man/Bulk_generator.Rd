@@ -44,6 +44,3 @@ list with T a data.frame of the Num.mixture pseudo bulk and P a data.frame of th
 \description{
 Pseudo Bulk generator from single cell data
 }
-\examples{
-Bulk_generator(sc_counts, phenoData)
-}

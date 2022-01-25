@@ -17,8 +17,6 @@
 #' @importFrom stats runif
 #' @importFrom utils ?
 #' @export
-#' @examples Bulk_generator(sc_counts, phenoData)
-
 Bulk_generator <- function(sce, phenoData, Num.mixtures = 1000, nb_CT_random = TRUE, pool.size = 100, min.percentage = 1, max.percentage = 99, seed = 24, forbidden_CT = NULL, showDensity = FALSE){
 
   CT = unique(phenoData$cellType)
