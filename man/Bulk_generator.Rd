@@ -13,7 +13,8 @@ Bulk_generator(
   min.percentage = 1,
   max.percentage = 99,
   seed = 24,
-  forbidden_CT = NULL
+  forbidden_CT = NULL,
+  showDensity = FALSE
 )
 }
 \arguments{
@@ -27,17 +28,22 @@ Bulk_generator(
 
 \item{pool.size}{integer number of single cell per mixture (default = 100)}
 
-\item{min.percentage}{minimum percentage of cells to put in a mixture (if seleted) (default = 1)}
+\item{min.percentage}{minimum percentage of cells to put in a mixture (if cell type is selceted) (default = 1)}
 
-\item{max.percentage}{maximum percentage of cells to put in a mixture (if seleted) (default = 99)}
+\item{max.percentage}{maximum percentage of cells to put in a mixture (if cell type is selceted) (default = 99)}
 
 \item{seed}{random seed (default = 24)}
 
 \item{forbidden_CT}{character vector indicating cellType not to put in the mixture.}
+
+\item{showDensity}{whether plot an overview of the cell type's density along mixtures (default = FALSE)}
 }
 \value{
-list with T a data.frame of the Num.mixture pseudo bulk and P a data.frame of the cellType proportion used to build the mixtures.
+list with T a data.frame of the Num.mixture pseudo bulk and P a data.frame of the cellType proportions used to build the mixtures.
 }
 \description{
 Pseudo Bulk generator from single cell data
+}
+\examples{
+Bulk_generator(sc_counts, phenoData)
 }

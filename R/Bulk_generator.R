@@ -5,19 +5,21 @@
 #' @param Num.mixtures integer number of pseudo bulk to generate (default = 1000)
 #' @param nb_CT_random whether the cells types present in pseudo bulk should be selected randomly or not. If not, all the cell types will be kept (default = TRUE)
 #' @param pool.size integer number of single cell per mixture (default = 100)
-#' @param min.percentage minimum percentage of cells to put in a mixture (if seleted) (default = 1)
-#' @param max.percentage maximum percentage of cells to put in a mixture (if seleted) (default = 99)
+#' @param min.percentage minimum percentage of cells to put in a mixture (if cell type is selceted) (default = 1)
+#' @param max.percentage maximum percentage of cells to put in a mixture (if cell type is selceted) (default = 99)
 #' @param seed random seed (default = 24)
 #' @param forbidden_CT character vector indicating cellType not to put in the mixture.
+#' @param showDensity whether plot an overview of the cell type's density along mixtures (default = FALSE)
 #'
-#' @return list with T a data.frame of the Num.mixture pseudo bulk and P a data.frame of the cellType proportion used to build the mixtures.
+#' @return list with T a data.frame of the Num.mixture pseudo bulk and P a data.frame of the cellType proportions used to build the mixtures.
 #' @import dplyr
+#' @import ggplot2
 #' @importFrom stats runif
 #' @importFrom utils ?
 #' @export
 #' @examples Bulk_generator(sc_counts, phenoData)
 
-Bulk_generator <- function(sce, phenoData, Num.mixtures = 1000, nb_CT_random = TRUE, pool.size = 100, min.percentage = 1, max.percentage = 99, seed = 24, forbidden_CT = NULL){
+Bulk_generator <- function(sce, phenoData, Num.mixtures = 1000, nb_CT_random = TRUE, pool.size = 100, min.percentage = 1, max.percentage = 99, seed = 24, forbidden_CT = NULL, showDensity = FALSE){
 
   CT = unique(phenoData$cellType)
   ?stopifnot(length(CT) >= 2)
@@ -88,6 +90,21 @@ Bulk_generator <- function(sce, phenoData, Num.mixtures = 1000, nb_CT_random = T
 
   P = do.call(cbind.data.frame, Proportions)
   T = do.call(cbind.data.frame, Tissues)
+
+  if (showDensity){
+    gg = data.frame(cellType = c(),
+                     mix = c(),
+                     Proportion = c())
+    sapply(colnames(P), function(x) {
+      gg = rbind(gg, data.frame(cellType = row.names(P),
+                                mix = rep(x,nrow(P)),
+                                Proportion = P[[x]]))
+    })
+    ggplot2::ggplot(gg)+
+      aes(y = Proportion)+
+      geom_density() +
+      facet_wrap(~cellType)
+  }
 
   return(list(T = T, P = P))
 }
