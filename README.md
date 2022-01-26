@@ -8,7 +8,7 @@
 
 ```{r, eval = FALSE}
 if(!require(devtools)){install.packages("devtools")}
-devtools::install_github("adrien0598/bulkfaker")
+devtools::install_github("adrien0598/bulkfakr")
 ```
 
 ## Quick use
